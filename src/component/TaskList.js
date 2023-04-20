@@ -5,9 +5,7 @@ import Task from './Task'
 const TaskList = () => {
   return (
     <div>
-       <h1>Task Manager</h1> 
-       
-       <Task/>
+       <h1 className='--center-all --text-purple'>MANAGER</h1> 
        <div className="--flex-between --pb">
           <h3>
             <b>Total Tasks:</b> 0
@@ -16,7 +14,10 @@ const TaskList = () => {
             <b>Completed Tasks:</b> 0
           </h3>
         </div>
+       <Task/>
+      
        <Form/>
+       
     </div>
   )
 }

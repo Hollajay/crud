@@ -10,7 +10,7 @@ const Form = () => {
         name="name"
 
         />
-        <button className='--btn' type='submit'>Submit</button>
+        <button className='--btn --btn-primary' type='submit'>Submit</button>
 
     </form>
   )

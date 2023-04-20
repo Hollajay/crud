@@ -120,7 +120,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
   color: var(--color-dark);
   margin-bottom: 1rem;
@@ -177,6 +177,9 @@ p {
 /* Text Color */
 .--text-light {
   color: #fff;
+}
+.--text-purple {
+  color:#4d0246
 }
 
 .--color-primary {
@@ -272,7 +275,7 @@ p {
 }
 
 .--btn {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 400;
   padding: 6px 8px;
   margin: 0 5px 0 0;
@@ -286,7 +289,7 @@ p {
 }
 
 .--btn:hover {
-  transform: translateY(-2px);
+  transform: translateX(-2px);
 }
 
 .--btn-lg {
@@ -437,8 +440,9 @@ a:hover {
   width: 100%;
   min-height: 100vh;
  /* background-color: var(--color-primary); */
-background: url('https://images.unsplash.com/photo-1512844484773-b3412be25763?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=600');
-  display: flex;
+background: url('https://media3.giphy.com/media/oB6KlAvOuaLtxYy8l4/giphy.webp?cid=ecf05e47dwf9uwd5ff8t0r47z2cqxui8h3jt4dlhdjuotb93&rid=giphy.webp&ct=g');
+ background-size: cover;
+display: flex;
   justify-content: center;
   align-items: start;
   padding: 0 10px;
