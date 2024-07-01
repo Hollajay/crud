@@ -8,10 +8,8 @@ const Form = () => {
         type='text'
         placeholder="Add a Task"
         name="name"
-
         />
         <button className='--btn --btn-primary' type='submit'>Submit</button>
-
     </form>
   )
 }
