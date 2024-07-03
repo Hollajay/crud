@@ -2,13 +2,13 @@ import React from 'react';
 import './Task.css';
 import { MdOutlineDeleteForever, MdEditNote } from 'react-icons/md';
 
-const Task = ({ task, index, delTaskHandler }) => {
+const Task = ({ todo, index, delTaskHandler ,updateTaskHandler}) => {
   return (
     <div className='task'>
-      <p>{index + 1} <b>{task.name}</b> <b>{new Date(task.createdAt).toLocaleString()}</b></p>
+      <p>{index + 1} <b>{todo}</b> <b>{new Date(todo).toLocaleString()}</b></p>
       <div className='task-icons'>
-        <MdEditNote />
-        <MdOutlineDeleteForever onClick={() => delTaskHandler(task._id)} />
+        <MdEditNote onClick={updateTaskHandler}/>
+        <MdOutlineDeleteForever onClick={ delTaskHandler} />
       </div>
     </div>
   );

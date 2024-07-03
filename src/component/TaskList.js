@@ -4,47 +4,41 @@ import Task from './Task';
 import axios from 'axios';
 
 const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
+  const [todo, setTodo] = useState([]);
+  const URL = 'http://localhost:5000';
 
-  const URL = 'http://localhost:8500';
-
-  const checkServer = async () => {
+  const getToDoAll = async () => {
     try {
-      const data = await axios.get(`${URL}/api/task`);
-      setTasks(data.data);
-      console.log(data);
+      const response = await axios.get(URL);
+      setTodo(response.data);
     } catch (error) {
       alert(error.message);
     }
   };
 
   useEffect(() => {
-    checkServer();
+    getToDoAll();
   }, []);
 
-  // const delTaskHandler = async (id) => {
-  //   try {
-  //     await axios.delete(`${URL}/api/task/${id}`);
-  //     setTasks(tasks.filter(task => task._id !== id));
-  //   } catch (error) {
-  //     alert('Error deleting task: ' + error.message);
-  //   }
-  // };
+  const totalTasks = todo.length;
+  const completedTasks = todo.filter(task => task.completed).length;
 
   return (
     <div>
       <h1 className='--center-all --text-purple'>MANAGER</h1>
       <div className="--flex-between --pb">
         <h3>
-          <b>Total Tasks:</b> {tasks.length}
+          <b>Total Tasks:</b> {totalTasks}
         </h3>
         <h3>
-          <b>Completed Tasks:</b> {tasks.filter(task => task.completed).length}
+          <b>Completed Tasks:</b> {completedTasks}
         </h3>
       </div>
-      {tasks.map((task, index) => (
-        <Task key={task._id} task={task} index={index}  />
+
+      {todo.map(data => (
+        <Task key={data._id} name={data.name} completed={data.completed} />
       ))}
+
       <Form />
     </div>
   );
