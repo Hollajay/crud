@@ -7,7 +7,8 @@ const TaskList = () => {
   const [tasks, setTasks] = useState([]);
   const [formData, setformData] = useState({name:''})
   const {name} = formData
-
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
 
   const API = 'http://localhost:5000';
   
@@ -46,10 +47,28 @@ const handleInput = (e) =>{
 
 
   //update task
-  const updateTaskHandler = async()=>{
-    await axios.patch(`${API}`)
 
-  }
+
+  const handleEditInput = (name, id) => {
+    setformData({ name });
+    setEditId(id);
+    setIsEditing(true);
+  };
+
+  // Handle edit click
+  const handleEditClick = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(`${API}/update/${editId}`, formData);
+      setformData({ name: '' });
+      setIsEditing(false);
+    
+      checkServer();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
 
 
   const deleteTask = async(id)=>{
@@ -81,13 +100,14 @@ const handleInput = (e) =>{
             index={index}
             createdAt={task.createdAt}
             delTaskHandler={deleteTask}
-            updateTaskHandler={updateTaskHandler}
-            
+            // handleEditClick={handleEditClick}
+            handleInput={handleInput}
+            handleEditInput={ handleEditInput}
           />
         ))
       }
 
-      <Form  createTask={createTask}  handleInput={handleInput} name={name}/>
+      <Form  createTask={createTask}  handleInput={handleInput} name={name} handleEditClick={handleEditClick} isEditing={isEditing}/>
     </div>
   );
 };

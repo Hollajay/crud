@@ -1,9 +1,11 @@
 import React from 'react'
 import './Task.css'
 
-const Form = ({name,handleInput,createTask}) => {
+const Form = ({name,handleInput,createTask,handleEditClick,isEditing}) => {
+
+  
   return (
-    <form className='task-form'>
+    <form className='task-form' onSubmit={isEditing ? handleEditClick : createTask}>
         <input
         type='text'
         placeholder="Add a Task"
@@ -12,7 +14,7 @@ const Form = ({name,handleInput,createTask}) => {
         onChange={handleInput}
         
         />
-        <button onClick={createTask} className='--btn --btn-primary' type='submit'>Submit</button>
+        <button   className='--btn --btn-primary' type='submit'>Submit</button>
     </form>
   )
 }
